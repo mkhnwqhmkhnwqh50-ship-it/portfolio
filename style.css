@@ -1,0 +1,35 @@
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #21414f;
+    border-radius: 30px;
+    padding: 10px 20px;
+    font-family: sans-serif;
+}
+
+.links {
+    display: flex;
+    gap: 15px;
+}
+
+.links a {
+    text-decoration: none;
+    color: white;
+    padding: 9px;
+}
+
+button {
+    color: black;
+    background-color: cornflowerblue;
+    padding: 9px 20px;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+}
+
+img {
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+}
