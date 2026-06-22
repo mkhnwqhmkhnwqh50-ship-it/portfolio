@@ -1,16 +1,49 @@
+/* 1. تصفير المسافات الافتراضية للمتصفح */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* 2. تنسيق الحاوية الرئيسية للموقع */
+.Page {
+    padding: 20px;
+    margin: 20px auto;
+    display: flex;
+    flex-direction: column;
+    /* ترتيب العناصر كـ أسطر تحت بعضها */
+    min-height: 100vh;
+    /* الصفحة تمتد مرنة مع المحتوى بدون ما تضرب */
+    background-color: #eee;
+    width: 800px;
+    gap: 30px;
+    /* مسافة ثابتة ونظيفة بين الأقسام الرئيسية */
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* 3. تنسيق الهيدر (Nav) */
 nav {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    /* اللوجو في طرف واللينكات في طرف */
     background-color: #21414f;
     border-radius: 30px;
     padding: 10px 20px;
-    font-family: sans-serif;
+    width: 100%;
+    /* يلتزم بحدود الأب تماماً */
+    direction: ltr;
+}
+
+.Logo {
+    color: white;
+    font-size: 22px;
 }
 
 .links {
     display: flex;
     gap: 15px;
+    /* مسافة بين اللينكات بدون margin */
 }
 
 .links a {
@@ -19,17 +52,136 @@ nav {
     padding: 9px;
 }
 
+/* 4. قسم الهيرو (Hero Section) */
+.Hero-Section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 20px 0;
+}
+
+.Content {
+    width: 420px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    /* مسافة متناسقة بين العنوان والبرجراف والزرار */
+}
+
+.Content h1 {
+    color: #21414f;
+    font-size: 28px;
+}
+
+.Content p {
+    color: #555;
+    line-height: 1.6;
+}
+
+/* تنسيق أزرار الموقع */
 button {
-    color: black;
-    background-color: cornflowerblue;
-    padding: 9px 20px;
+    color: white;
+    background-color: #21414f;
+    padding: 10px 25px;
     border-radius: 20px;
     border: none;
     cursor: pointer;
+    width: fit-content;
+    /* يمنع تمطيط الزرار ويخليه على قد الكلمة */
+    font-weight: bold;
 }
 
-img {
-    border-radius: 50%;
-    width: 50px;
-    height: 50px;
+button:hover {
+    background-color: cornflowerblue;
+}
+
+.Photo img {
+    width: 280px;
+    /* حجم متناسق مع مساحة الـ 800px */
+    height: auto;
+    border-radius: 20px;
+}
+
+/* 5. قسم كروت المميزات (Features Section) */
+.Features-Section {
+    display: flex;
+    width: 100%;
+    gap: 10px;
+    /* الفجوة بين الكروت */
+    counter-reset: card-counter;
+    /* تصفير العداد عشان يبدأ من 1 */
+    direction: ltr;
+}
+
+.Card {
+    /* الحسبة الهندسية: 100% ناقص مجموع الفجوات (10px + 10px = 20px) مقسومة على 3 كروت */
+    width: calc((100% - 20px) / 3);
+    background-color: #21414f1c;
+    padding: 20px;
+    counter-increment: card-counter;
+    /* زيادة العداد 1 مع كل كارت */
+    position: relative;
+    border-radius: 10px;
+}
+
+/* وضع الأرقام أوتوماتيك (1, 2, 3) في زاوية كل كارت */
+.Card::before {
+    content: counter(card-counter);
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    /* بما أن الموقع RTL فالرقم هيجي فوق على اليمين بنظافة */
+    font-size: 18px;
+    font-weight: bold;
+    color: #21414f;
+}
+
+.Card h3 {
+    padding-bottom: 8px;
+    color: #21414f;
+    margin-top: 10px;
+    /* مسافة صغيرة عشان ميزنقش الرقم */
+}
+
+.Card p {
+    font-size: 14px;
+    color: #666;
+    line-height: 1.5;
+}
+
+/* 6. قسم الاشتراك (Footer) */
+.Newsletter {
+    background-color: #D3D3D3;
+    width: 100%;
+    text-align: center;
+    padding: 25px;
+    margin-top: auto;
+    /* يضمن إن الفوتر يفضل تحت خالص */
+    border-radius: 15px;
+}
+
+.Sub {
+    padding-bottom: 15px;
+    font-size: 24px;
+    color: #21414f;
+}
+
+/* حقل الإدخال الاحترافي بدون بوردر وبمؤشر أحمر */
+input {
+    border: none;
+    outline: none;
+    padding: 10px;
+    width: 250px;
+    height: 38px;
+    border-radius: 5px;
+    margin-left: 10px;
+    /* مسافة بينه وبين زرار اشترك بما أن الاتجاه عربي */
+    caret-color: red;
+    /* لون مؤشر الكتابة أحمر */
+}
+
+.Newsletter .Send {
+    padding: 10px 20px;
+    border-radius: 5px;
 }
